@@ -1,0 +1,21 @@
+{
+  "name": "mg42",
+  "version": "0.0.0",
+  "description": "Fire at HTTP services with ease!",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodeunit ./tests/*"
+  },
+  "keywords": [
+    "mg42",
+    "request",
+    "http",
+    "stress",
+    "test"
+  ],
+  "author": "Olivier Kaisin",
+  "license": "MIT",
+  "dependencies": {
+    "keep-alive-agent": "0.0.1"
+  }
+}
