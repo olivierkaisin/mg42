@@ -19,6 +19,8 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "keep-alive-agent": "0.0.1"
+    "keep-alive-agent": "0.0.1",
+    "q": "~0.9.7",
+    "request": "~2.27.0"
   }
 }
