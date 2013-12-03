@@ -1,1 +1,1 @@
-module.exports = require("./Shooter");
+module.exports = require("./lib/Shooter");
