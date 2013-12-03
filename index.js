@@ -1,6 +1,6 @@
 "use strict";
 
-/* jshint node:true */
+/* jshint node:true, laxcomma:true */
 
 /**
  * @module mg42
@@ -36,6 +36,11 @@ var setMaxSockets = function (maxSockets) {
  * @public
  *
  * @param  {Object} options
+ * @param  {Object} options.form
+ * @param  {Object} options.json
+ * @param  {Object} options.qs
+ * @param  {String} options.method
+ *
  * @return {Promise:String}
  */
 var shootOnce = function (options) {
@@ -45,7 +50,11 @@ var shootOnce = function (options) {
     url      : options.url,
     timeout  : options.timeout || 10000,
     encoding : "utf8",
-    pool     : httpAgent
+    pool     : httpAgent,
+    form     : options.form,
+    json     : options.json,
+    qs       : options.qs,
+    method   : options.method
   };
 
   var deferred = Q.defer();
@@ -89,6 +98,10 @@ var shootOnce = function (options) {
  * @param  {String} options.url
  * @param  {Number} options.number
  * @param  {Number} options.parallelRequests
+ * @param  {Object} options.form
+ * @param  {Object} options.json
+ * @param  {Object} options.qs
+ *
  * @return {Promise:Object}
  */
 var shootMultiple = function (options) {
@@ -98,6 +111,10 @@ var shootMultiple = function (options) {
     , parallelRequests = options.parallelRequests || 1
     , delay            = options.delay || 0
     , timeout          = options.timeout || 10000
+    , method           = options.method
+    , form             = options.form
+    , json             = options.json
+    , qs               = options.qs
     , progress         = options.progress || new Events.EventEmitter();
 
   // Initial state
@@ -130,25 +147,42 @@ var shootMultiple = function (options) {
     });
   };
 
+  // Predefine the request params
+  var requestParams = {
+    url     : url,
+    timeout : timeout,
+    form    : form,
+    json    : json,
+    qs      : qs,
+    method  : method
+  };
+
   // Iteration implementation
   var iterate = function () {
     i++;
 
     if (i <= times) {
 
-      var request = { id: i, start: new Date(), end: null, error: null };
+      var request = {
+        id    : i,
+        start : new Date(),
+        end   : null,
+        error : null,
+        body  : null
+      };
 
       // Emit the start
       progress.emit("start", request);
       ++active;
 
-      return shootOnce({ url : url, timeout: timeout })
+      return shootOnce(requestParams)
 
-        .then(function () {
+        .then(function (body) {
           --active;
           success++;
 
-          request.end = new Date();
+          request.body = body;
+          request.end  = new Date();
 
           avgTime = ((request.end.getTime() - request.start.getTime()) + avgTime * avgAmt++) / avgAmt;
 
