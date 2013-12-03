@@ -1,6 +1,15 @@
+MG42 - An HTTP machine gun
+==========================
+
+Usage:
 
 ```javascript
-var mg42 = require("./");
+"use strict";
+
+/* jshint node:true, laxcomma:true */
+
+var mg42  = require("./")
+  , Faker = require("Faker");
 
 mg42.setMaxSockets(50);                         // Set max sockets in the HTTP pool to 50
 
@@ -9,10 +18,22 @@ var ev = mg42.shootMultiple({
   times            : 200,                       // Do 200 requests in total
   parallelRequests : 20,                        // 20 parallel requests max
   delay            : 100,                       // 100 ms
-  timeout          : 30000                      // 30 sec
+  timeout          : 30000                      // 30 sec,
+  method           : "POST"
 });
 
-// When we receive a status, we log it to the console
+configuration.__defineGetter__("form", function () {
+
+  return {
+    name    : Faker.Name.findName(),
+    email   : Faker.Internet.email(),
+    message : Faker.Lorem.paragraph()
+  };
+
+});
+
+var ev = mg42.shootMultiple(configuration);
+
 ev.on("status", function (obj) {
 
   // Clear the console
