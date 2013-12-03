@@ -1,5 +1,9 @@
-MG42 - An HTTP machine gun
-==========================
+MG42
+====
+
+### An HTTP machine gun
+
+------------------------
 
 Usage:
 
