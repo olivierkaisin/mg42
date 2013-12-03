@@ -1,0 +1,215 @@
+{
+    "project": {},
+    "files": {
+        "lib/HttpError.js": {
+            "name": "lib/HttpError.js",
+            "modules": {},
+            "classes": {
+                "HttpError": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/Shooter.js": {
+            "name": "lib/Shooter.js",
+            "modules": {
+                "mg42": 1
+            },
+            "classes": {
+                "Shooter": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {
+        "mg42": {
+            "name": "mg42",
+            "submodules": {},
+            "classes": {
+                "HttpError": 1,
+                "Shooter": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "lib/Shooter.js",
+            "line": 5
+        }
+    },
+    "classes": {
+        "HttpError": {
+            "name": "HttpError",
+            "shortname": "HttpError",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "mg42",
+            "file": "lib/HttpError.js",
+            "line": 8,
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "statusCode",
+                    "description": "",
+                    "type": "Number"
+                },
+                {
+                    "name": "body",
+                    "description": "",
+                    "type": "String"
+                }
+            ]
+        },
+        "Shooter": {
+            "name": "Shooter",
+            "shortname": "Shooter",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "mg42",
+            "namespace": "",
+            "file": "lib/Shooter.js",
+            "line": 5
+        }
+    },
+    "classitems": [
+        {
+            "file": "lib/Shooter.js",
+            "line": 18,
+            "var": "{Http.Agent}",
+            "class": "Shooter",
+            "module": "mg42"
+        },
+        {
+            "file": "lib/Shooter.js",
+            "line": 24,
+            "description": "Sets the maximum amount of sockets allowed in the HTTP pool.",
+            "itemtype": "method",
+            "name": "setMaxSockets",
+            "access": "public",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "maxSockets",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "class": "Shooter",
+            "module": "mg42"
+        },
+        {
+            "file": "lib/Shooter.js",
+            "line": 36,
+            "description": "Shoots once on an HTTP service.",
+            "itemtype": "method",
+            "name": "shootOnce",
+            "access": "public",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "form",
+                            "description": "",
+                            "type": "Object"
+                        },
+                        {
+                            "name": "json",
+                            "description": "",
+                            "type": "Object"
+                        },
+                        {
+                            "name": "qs",
+                            "description": "",
+                            "type": "Object"
+                        },
+                        {
+                            "name": "method",
+                            "description": "",
+                            "type": "String"
+                        }
+                    ]
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Promise:String"
+            },
+            "class": "Shooter",
+            "module": "mg42"
+        },
+        {
+            "file": "lib/Shooter.js",
+            "line": 95,
+            "description": "Shoots multiple times on a certain endpoint.",
+            "itemtype": "method",
+            "name": "shootMultiple",
+            "access": "public",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "url",
+                            "description": "",
+                            "type": "String"
+                        },
+                        {
+                            "name": "number",
+                            "description": "",
+                            "type": "Number"
+                        },
+                        {
+                            "name": "parallelRequests",
+                            "description": "",
+                            "type": "Number"
+                        },
+                        {
+                            "name": "form",
+                            "description": "",
+                            "type": "Object"
+                        },
+                        {
+                            "name": "json",
+                            "description": "",
+                            "type": "Object"
+                        },
+                        {
+                            "name": "qs",
+                            "description": "",
+                            "type": "Object"
+                        }
+                    ]
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Promise:Object"
+            },
+            "class": "Shooter",
+            "module": "mg42"
+        }
+    ],
+    "warnings": [
+        {
+            "message": "unknown tag: var",
+            "line": " lib/Shooter.js:18"
+        },
+        {
+            "message": "Missing item type",
+            "line": " lib/Shooter.js:18"
+        }
+    ]
+}
