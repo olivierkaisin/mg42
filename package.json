@@ -13,10 +13,7 @@
     "stress",
     "test"
   ],
-  "author": "WooRank",
-  "contributors": [
-    "Olivier Kaisin"
-  ],
+  "author": "Olivier Kaisin",
   "license": "MIT",
   "dependencies": {
     "keep-alive-agent": "0.0.1",
