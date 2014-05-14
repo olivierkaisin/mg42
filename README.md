@@ -3,7 +3,6 @@ MG42
 
 An HTTP benchmarking tool
 
-------------------------
 
 ### Example:
 
